@@ -1,0 +1,28 @@
+{% extends 'bookinginfo/base.html' %}
+
+{% block title %}
+    Semester - {{ semester }}
+{% endblock %}
+
+{% block content %}
+    <h2>{{ semester }}</h2>
+
+    <section>
+    <table>
+            <tr>
+                <th>Semester Name:</th>
+                <td>{{ semester }}</td>
+            </tr>
+    </table>
+        <h3>Services</h3>
+        <ul>
+            {% for service in service_list %}
+                <li>
+                    <a href="">{{ service }}</a>
+                </li>
+            {% empty %}
+                <li><em>There are currently no bus services for this semester.</em></li>
+            {% endfor %}
+        </ul>
+    </section>
+{% endblock %}
