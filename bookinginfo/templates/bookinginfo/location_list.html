@@ -1,0 +1,59 @@
+{#{% extends 'courseinfo/base.html' %}#}
+{##}
+{#{% block title %}#}
+{#    Location List#}
+{#{% endblock %}#}
+{##}
+{#{% block create_button %}#}
+{#    {% if perms.courseinfo.add_instructor %}#}
+{#        <a#}
+{#                href="{% url 'bookinginfo_location_create_urlpattern' %}"#}
+{#                class="button button-primary">#}
+{#            Add new Location/Destination</a>#}
+{#    {% endif %}#}
+{#{% endblock %}#}
+{##}
+{#{% block org_content %}#}
+{#    <h2>Location List</h2>#}
+{#    {% if perms.courseinfo.add_instructor %}#}
+{#        <div class="mobile">#}
+{#            <a#}
+{#                    href="{% url 'courseinfo_instructor_create_urlpattern' %}"#}
+{#                    class="button button-primary">#}
+{#                Create New Instructor</a>#}
+{#        </div>#}
+{#    {% endif %}#}
+{#    <ul>#}
+{#        {% for location in location_list %}#}
+{#            <li>#}
+{#                <a href="{{ instructor.get_absolute_url }}">#}
+{#                    {{ instructor }}</a>#}
+{#            </li>#}
+{#        {% empty %}#}
+{#            <li><em>There are currently no instructors available.</em></li>#}
+{#        {% endfor %}#}
+{#    </ul>#}
+{#{% endblock %}#}
+
+
+{% extends 'bookinginfo/base.html' %}
+
+{% block title %}
+    Location List
+{%  endblock %}
+
+{% block content %}
+<h2>Location List</h2>
+<ul>
+    {% for location in location_list %}
+    <li>
+      <a href="">{{ location }}</a>
+    </li>
+    {% empty %}
+      <li><em> There are currently no location available.</em></li>
+    {% endfor %}
+</ul>
+{% endblock %}
+
+
+

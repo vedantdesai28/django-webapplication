@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+            title is provided by inheriting templates
+        {% endblock %}
+    </title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--[if IE]><script
+      src="http://html5shiv.googlecode.com/svn/trunk/html5.js">
+    </script><![endif]-->
+</head>
+
+<body>
+
+<div><!-- start of container -->
+    <header>
+        <h1>Chambana Bus Service</h1>
+        <h2>Bus Schedule and enrollment System</h2>
+    </header>
+    <nav>
+        <ul>
+            <li>
+                <a href="">
+                    Locations</a></li>
+            <li>
+                <a href="">
+                    Services</a></li>
+            <li>
+                <a href="">
+                    Buses</a></li>
+            <li>
+                <a href="">
+                    Semesters</a></li>
+            <li>
+                <a href="">
+                    Users</a></li>
+            <li>
+                <a href="">
+                    Enrollment to Bus Service</a></li>
+        </ul>
+    </nav>
+    <main>
+        {% block content %}
+            This is default content!
+        {% endblock %}
+    </main>
+</div><!-- end of container -->
+
+<footer>
+    <p>
+        <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+            <img alt="Creative Commons License" style="border-width:0"
+                 src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"/>
+        </a><br/><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Final Project code </span>
+        by
+        <a xmlns:cc="http://creativecommons.org/ns#" href="https://www.linkedin.com/in/vedant--desai" property="cc:attributionName"
+           rel="cc:attributionURL">Vedant Desai</a>
+    </p>
+</footer>
+
+</body>
+</html>
+

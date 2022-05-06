@@ -1,0 +1,39 @@
+{#{% extends 'courseinfo/base.html' %}#}
+{##}
+{#{% block title %}#}
+{#    Section List#}
+{#{%  endblock %}#}
+{##}
+{#{% block content %}#}
+{#<h2>Section List</h2>#}
+{#<ul>#}
+{#    {% for section in section_list %}#}
+{#    <li>#}
+{#      <a href="">{{ section}}</a>#}
+{#    </li>#}
+{#    {% empty %}#}
+{#      <li><em> There are currently no section available.</em></li>#}
+{#    {% endfor %}#}
+{#</ul>#}
+{#{% endblock %}#}
+
+
+
+{% extends 'bookinginfo/base.html' %}
+
+{% block title %}
+    Service List
+{%  endblock %}
+
+{% block content %}
+<h2>Service List</h2>
+<ul>
+    {% for service in service_list %}
+    <li>
+      <a href="">{{ service}}</a>
+    </li>
+    {% empty %}
+      <li><em> There are currently no services available.</em></li>
+    {% endfor %}
+</ul>
+{% endblock %}

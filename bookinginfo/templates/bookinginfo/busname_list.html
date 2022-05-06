@@ -1,0 +1,18 @@
+{% extends 'bookinginfo/base.html' %}
+
+{% block title %}
+    Bus List
+{%  endblock %}
+
+{% block content %}
+<h2>Bus List</h2>
+<ul>
+    {% for bus in bus_list %}
+    <li>
+      <a href="">{{ bus }}</a>
+    </li>
+    {% empty %}
+      <li><em> There are currently no buses available.</em></li>
+    {% endfor %}
+</ul>
+{% endblock %}

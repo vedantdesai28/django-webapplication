@@ -1,0 +1,19 @@
+{% extends 'bookinginfo/base.html' %}
+
+{% block title %}
+    Enrollment List
+{%  endblock %}
+
+{% block content %}
+<h2>Enrollment List</h2>
+<ul>
+    {% for enrollment in enrollment_list %}
+    <li>
+      <a href="">{{ enrollment }}</a>
+    </li>
+    {% empty %}
+      <li><em> There are currently no enrollments available.</em></li>
+    {% endfor %}
+</ul>
+{% endblock %}
+
