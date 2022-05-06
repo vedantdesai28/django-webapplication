@@ -6,6 +6,9 @@
 
 {% block content %}
 <h2>User List</h2>
+    <div>
+    <a href="{% url 'bookinginfo_user_create_urlpattern' %}">Add User</a>
+    </div>
 <ul>
     {% for user in user_list %}
     <li>

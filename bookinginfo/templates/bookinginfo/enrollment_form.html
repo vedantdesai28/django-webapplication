@@ -1,0 +1,15 @@
+{% extends 'bookinginfo/base.html' %}
+
+{% block title %}
+    Create Enrollment
+{% endblock %}
+
+{% block content %}
+    <form
+        action="{% url 'bookinginfo_enrollment_create_urlpattern'%}"
+        method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Create Enrollment</button>
+    </form>
+{% endblock %}

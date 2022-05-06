@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import View
 
+from bookinginfo.forms import LocationForm, ServiceForm, BusForm, SemesterForm, EnrollmentForm, UserForm
 from bookinginfo.models import (
     LocationDetail,
     BusName,
@@ -9,6 +10,7 @@ from bookinginfo.models import (
     User,
     Service,
 )
+from bookinginfo.utils import ObjectCreateMixin
 
 
 class LocationList(View):
@@ -35,6 +37,11 @@ class LocationDetails(View):
             'bookinginfo/location_detail.html',
             {'location': location, 'service_list': service_list_start, 'service_list_2': service_list_end}
         )
+
+
+class LocationCreate(ObjectCreateMixin, View):
+    form_class = LocationForm
+    template_name = 'bookinginfo/location_form.html'
 
 
 class ServiceList(View):
@@ -73,6 +80,11 @@ class ServiceDetail(View):
         )
 
 
+class ServiceCreate(ObjectCreateMixin, View):
+    form_class = ServiceForm
+    template_name = 'bookinginfo/service_form.html'
+
+
 class BusList(View):
 
     def get(self, request):
@@ -106,6 +118,11 @@ class BusDetail(View):
         )
 
 
+class BusCreate(ObjectCreateMixin, View):
+    form_class = BusForm
+    template_name = 'bookinginfo/bus_form.html'
+
+
 class SemesterList(View):
 
     def get(self, request):
@@ -134,6 +151,11 @@ class SemesterDetail(View):
         )
 
 
+class SemesterCreate(ObjectCreateMixin, View):
+    form_class = SemesterForm
+    template_name = 'bookinginfo/semester_form.html'
+
+
 class UserList(View):
 
     def get(self, request):
@@ -160,6 +182,11 @@ class UserDetail(View):
                 'user': user,
                 'service_list': service_list}
         )
+
+
+class UserCreate(ObjectCreateMixin, View):
+    form_class = UserForm
+    template_name = 'bookinginfo/user_form.html'
 
 
 class EnrollmentList(View):
@@ -191,3 +218,8 @@ class EnrollmentDetail(View):
                 'service': service
             }
         )
+
+
+class EnrollmentCreate(ObjectCreateMixin, View):
+    form_class = EnrollmentForm
+    template_name = 'bookinginfo/enrollment_form.html'

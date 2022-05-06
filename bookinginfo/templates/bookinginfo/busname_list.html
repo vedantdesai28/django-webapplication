@@ -6,6 +6,9 @@
 
 {% block content %}
 <h2>Bus List</h2>
+    <div>
+    <a href="{% url 'bookinginfo_bus_create_urlpattern' %}">Add Bus</a>
+    </div>
 <ul>
     {% for bus in bus_list %}
     <li>

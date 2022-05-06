@@ -1,0 +1,15 @@
+{% extends 'bookinginfo/base.html' %}
+
+{% block title %}
+    Add Bus
+{% endblock %}
+
+{% block content %}
+    <form
+        action="{% url 'bookinginfo_bus_create_urlpattern'%}"
+        method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add Bus</button>
+    </form>
+{% endblock %}

@@ -6,6 +6,9 @@
 
 {% block content %}
 <h2>Enrollment List</h2>
+    <div>
+    <a href="{% url 'bookinginfo_enrollment_create_urlpattern' %}">Add Enrollment</a>
+    </div>
 <ul>
     {% for enrollment in enrollment_list %}
     <li>

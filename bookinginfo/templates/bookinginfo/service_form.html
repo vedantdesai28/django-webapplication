@@ -1,0 +1,15 @@
+{% extends 'bookinginfo/base.html' %}
+
+{% block title %}
+    Create Service
+{% endblock %}
+
+{% block content %}
+    <form
+        action="{% url 'bookinginfo_service_create_urlpattern'%}"
+        method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Create Service</button>
+    </form>
+{% endblock %}

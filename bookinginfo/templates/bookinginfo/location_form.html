@@ -1,0 +1,15 @@
+{% extends 'bookinginfo/base.html' %}
+
+{% block title %}
+    Create Location
+{% endblock %}
+
+{% block content %}
+    <form
+        action="{% url 'bookinginfo_location_create_urlpattern'%}"
+        method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add Location</button>
+    </form>
+{% endblock %}
