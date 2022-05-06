@@ -1,0 +1,22 @@
+{% extends 'bookinginfo/base.html' %}
+
+{% block title %}
+    Enrollment - {{ enrollment }}
+{% endblock %}
+
+{% block content %}
+    <h2>{{ enrollment.user }}</h2>
+
+    <section>
+        <table>
+            <tr>
+                <th>User:</th>
+                <td>{{ user }}</td>
+            </tr>
+            <tr>
+                <th>Service:</th>
+                <td>{{ service }}</td>
+            </tr>
+        </table>
+    </section>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'bookinginfo/base.html' %}
+
+{% block title %}
+    Service - {{ service }}
+{% endblock %}
+
+{% block content %}
+    <h2>{{ service }}</h2>
+
+    <section>
+        <table>
+            <tr>
+                <th>Bus:</th>
+                <td><a href="">{{ bus }}</a></td>
+            </tr>
+            <tr>
+                <th>Trip Direction:</th>
+                <td>{{ service.trip_direction }}</td>
+            </tr>
+            <tr>
+                <th>Start Location:</th>
+                <td><a href="">{{ service.end_location }}</a></td>
+            </tr>
+            <tr>
+                <th>End Location:</th>
+                <td><a href="">{{ service.start_location }}</a></td>
+            </tr>
+            <tr>
+                <th>Semester:</th>
+                <td><a href="">{{ semester }}</a></td>
+            </tr>
+        </table>
+
+    </section>
+
+    <section>
+        <h3>Enrollments:</h3>
+        <ul>
+            {% for enrollment in enrollment_list %}
+                <li>
+                    <a href="">{{ enrollment.user }}</a>
+                </li>
+            {% empty %}
+                <li><em>There are currently no students registered for this section.</em></li>
+            {% endfor %}
+        </ul>
+    </section>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'bookinginfo/base.html' %}
+
+{% block title %}
+    Location - {{ location }}
+{% endblock %}
+
+{% block content %}
+    <h2>{{ location }}</h2>
+
+    <section>
+        <table>
+            <tr>
+                <th>Location Name:</th>
+                <td>{{ location.location_name }}</td>
+            </tr>
+            {% if location.disambiguator %}
+                <tr>
+                    <th>Disambiguator:</th>
+                    <td>{{ location.disambiguator }}</td>
+                </tr>
+            {% endif %}
+        </table>
+    </section>
+
+    <section>
+        <h3>Services</h3>
+        <h5>Buses Starting at {{ location }}</h5>
+        <ul>
+            {% for service in service_list_2 %}
+                <li>
+                    <a href="">{{ service }}</a>
+                </li>
+            {% empty %}
+                <li><em>This location does not have any originating/starting bus.</em></li>
+            {% endfor %}
+        </ul>
+        <h5>Buses ending at {{ location }}</h5>
+        <ul>
+            {% for service in service_list %}
+                <li>
+                    <a href="">{{ service }}</a>
+                </li>
+            {% empty %}
+                <li><em>None of the bus service end at this location.</em></li>
+            {% endfor %}
+        </ul>
+    </section>
+{% endblock %}

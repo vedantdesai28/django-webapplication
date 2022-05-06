@@ -1,0 +1,40 @@
+{% extends 'bookinginfo/base.html' %}
+
+{% block title %}
+    User List - {{ user }}
+{% endblock %}
+
+{% block content %}
+    <h2>{{ user }}</h2>
+
+    <section>
+        <table>
+            <tr>
+                <th>First Name:</th>
+                <td>{{ user.first_name }}</td>
+            </tr>
+            <tr>
+                <th>Last Name:</th>
+                <td>{{ user.last_name }}</td>
+            </tr>
+            {% if user.disambiguator %}
+                <tr>
+                    <th>Disambiguator:</th>
+                    <td>{{ user.disambiguator }}</td>
+                </tr>
+            {% endif %}
+        </table>
+    </section>
+    <h3>Enrolled for Services</h3>
+    <section>
+        <ul>
+            {% for service in service_list %}
+                <li>
+                    <a href="">{{ service }}</a>
+                </li>
+            {% empty %}
+                <li><em>User is not enrolled to any sections.</em></li>
+            {% endfor %}
+        </ul>
+    </section>
+{% endblock %}
