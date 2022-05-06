@@ -6,7 +6,12 @@
 
 {% block content %}
     <h2>{{ user }}</h2>
-
+    <li>
+          <a href = "{{ user.get_update_url }}">Update User</a>
+      </li>
+     <li>
+          <a href = "{{ user.get_delete_url }}">Delete User</a>
+      </li>
     <section>
         <table>
             <tr>

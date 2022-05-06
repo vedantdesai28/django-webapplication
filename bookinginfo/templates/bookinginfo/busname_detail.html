@@ -6,7 +6,12 @@
 
 {% block content %}
     <h2>{{ bus }}</h2>
-
+     <li>
+          <a href = "{{ bus.get_update_url }}">Update Bus Detail</a>
+      </li>
+     <li>
+          <a href = "{{ bus.get_delete_url }}">Delete Bus</a>
+      </li>
      <section>
      <table>
             <tr>

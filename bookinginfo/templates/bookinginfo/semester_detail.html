@@ -6,7 +6,12 @@
 
 {% block content %}
     <h2>{{ semester }}</h2>
-
+     <li>
+          <a href = "{{ semester.get_update_url }}">Update Semester</a>
+      </li>
+     <li>
+          <a href = "{{ semester.get_delete_url }}">Delete Semester</a>
+      </li>
     <section>
     <table>
             <tr>

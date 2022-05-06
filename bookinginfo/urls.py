@@ -14,7 +14,14 @@ from bookinginfo.views import (
     EnrollmentDetail,
     BusDetail,
     LocationCreate,
-    ServiceCreate, BusCreate, SemesterCreate, EnrollmentCreate, UserCreate
+    ServiceCreate,
+    BusCreate,
+    SemesterCreate,
+    EnrollmentCreate,
+    UserCreate,
+    LocationUpdate,
+    ServiceUpdate,
+    BusUpdate, SemesterUpdate, UserUpdate, EnrollmentUpdate
 )
 
 urlpatterns = [
@@ -30,6 +37,10 @@ urlpatterns = [
          LocationCreate.as_view(),
          name='bookinginfo_location_create_urlpattern'),
 
+    path('location/<int:pk>/update/',
+         LocationUpdate.as_view(),
+         name='bookinginfo_location_update_urlpattern'),
+
     path('service/',
          ServiceList.as_view(),
          name='bookinginfo_service_list_urlpattern'),
@@ -41,6 +52,10 @@ urlpatterns = [
     path('service/create/',
          ServiceCreate.as_view(),
          name='bookinginfo_service_create_urlpattern'),
+
+    path('service/<int:pk>/update/',
+         ServiceUpdate.as_view(),
+         name='bookinginfo_service_update_urlpattern'),
 
     path('bus/',
          BusList.as_view(),
@@ -54,6 +69,10 @@ urlpatterns = [
          BusDetail.as_view(),
          name='bookinginfo_bus_detail_urlpattern'),
 
+    path('bus/<int:pk>/update/',
+         BusUpdate.as_view(),
+         name='bookinginfo_bus_update_urlpattern'),
+
     path('semester/',
          SemesterList.as_view(),
          name='bookinginfo_semester_list_urlpattern'),
@@ -65,6 +84,10 @@ urlpatterns = [
     path('semester/create/',
          SemesterCreate.as_view(),
          name='bookinginfo_semester_create_urlpattern'),
+
+    path('semester/<int:pk>/update/',
+         SemesterUpdate.as_view(),
+         name='bookinginfo_semester_update_urlpattern'),
 
     path('user/',
          UserList.as_view(),
@@ -78,6 +101,10 @@ urlpatterns = [
          UserCreate.as_view(),
          name='bookinginfo_user_create_urlpattern'),
 
+    path('user/<int:pk>/update/',
+         UserUpdate.as_view(),
+         name='bookinginfo_user_update_urlpattern'),
+
     path('enrollment/',
          EnrollmentList.as_view(),
          name='bookinginfo_enrollment_list_urlpattern'),
@@ -89,5 +116,9 @@ urlpatterns = [
     path('enrollment/create/',
          EnrollmentCreate.as_view(),
          name='bookinginfo_enrollment_create_urlpattern'),
+
+    path('enrollment/<int:pk>/enrollment/',
+         EnrollmentUpdate.as_view(),
+         name='bookinginfo_enrollment_update_urlpattern'),
 
 ]

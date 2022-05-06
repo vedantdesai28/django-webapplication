@@ -47,10 +47,10 @@ class Semester(models.Model):
                        kwargs={'pk': self.pk}
                        )
 
-    def get_delete_url(self):
-        return reverse('bookinginfo_semester_delete_urlpattern',
-                       kwargs={'pk': self.pk}
-                       )
+    # def get_delete_url(self):
+    #     return reverse('bookinginfo_semester_delete_urlpattern',
+    #                    kwargs={'pk': self.pk}
+    #                    )
 
     class Meta:
         ordering = ['year__year', 'period__period_sequence']
@@ -77,10 +77,10 @@ class BusName(models.Model):
                        kwargs={'pk': self.pk}
                        )
 
-    def get_delete_url(self):
-        return reverse('bookinginfo_bus_delete_urlpattern',
-                       kwargs={'pk': self.pk}
-                       )
+    # def get_delete_url(self):
+    #     return reverse('bookinginfo_bus_delete_urlpattern',
+    #                    kwargs={'pk': self.pk}
+    #                    )
 
     class Meta:
         ordering = ['bus_number', 'bus_name']
@@ -112,10 +112,10 @@ class LocationDetail(models.Model):
                        kwargs={'pk': self.pk}
                        )
 
-    def get_delete_url(self):
-        return reverse('bookinginfo_location_delete_urlpattern',
-                       kwargs={'pk': self.pk}
-                       )
+    # def get_delete_url(self):
+    #     return reverse('bookinginfo_location_delete_urlpattern',
+    #                    kwargs={'pk': self.pk}
+    #                    )
 
     class Meta:
         ordering = ['location_name', 'disambiguator']
@@ -148,10 +148,10 @@ class User(models.Model):
                        kwargs={'pk': self.pk}
                        )
 
-    def get_delete_url(self):
-        return reverse('bookinginfo_user_delete_urlpattern',
-                       kwargs={'pk': self.pk}
-                       )
+    # def get_delete_url(self):
+    #     return reverse('bookinginfo_user_delete_urlpattern',
+    #                    kwargs={'pk': self.pk}
+    #                    )
 
     class Meta:
         ordering = ['last_name', 'first_name', 'disambiguator']
@@ -181,10 +181,10 @@ class Service(models.Model):
                        kwargs={'pk': self.pk}
                        )
 
-    def get_delete_url(self):
-        return reverse('bookinginfo_service_delete_urlpattern',
-                       kwargs={'pk': self.pk}
-                       )
+    # def get_delete_url(self):
+    #     return reverse('bookinginfo_service_delete_urlpattern',
+    #                    kwargs={'pk': self.pk}
+    #                    )
 
     class Meta:
         ordering = ['bus', 'trip_direction', 'semester']
@@ -211,10 +211,10 @@ class Enrollment(models.Model):
                        kwargs={'pk': self.pk}
                        )
 
-    def get_delete_url(self):
-        return reverse('bookinginfo_enrollment_delete_urlpattern',
-                       kwargs={'pk': self.pk}
-                       )
+    # def get_delete_url(self):
+    #     return reverse('bookinginfo_enrollment_delete_urlpattern',
+    #                    kwargs={'pk': self.pk}
+    #                    )
 
     class Meta:
         ordering = ['service', 'user']

@@ -6,6 +6,12 @@
 
 {% block content %}
     <h2>{{ service }}</h2>
+    <li>
+          <a href = "{{ service.get_update_url }}">Update Service Detail</a>
+      </li>
+     <li>
+          <a href = "{{ service.get_delete_url }}">Delete Service</a>
+      </li>
 
     <section>
         <table>

@@ -1,0 +1,15 @@
+{% extends 'bookinginfo/base.html' %}
+
+{% block title %}
+    Update Enrollment
+{% endblock %}
+
+{% block content %}
+    <form
+        action="{{ enrollment.get_update_url }}"
+        method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Update Enrollment</button>
+    </form>
+{% endblock %}

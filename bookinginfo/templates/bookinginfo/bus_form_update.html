@@ -1,0 +1,15 @@
+{% extends 'bookinginfo/base.html' %}
+
+{% block title %}
+    Update Bus Detail
+{% endblock %}
+
+{% block content %}
+    <form
+        action="{{ bus.get_update_url }}"
+        method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Update Bus</button>
+    </form>
+{% endblock %}

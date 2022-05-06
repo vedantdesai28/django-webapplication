@@ -6,6 +6,14 @@
 
 {% block content %}
     <h2>{{ location }}</h2>
+    <ul>
+    <li>
+          <a href = "{{ location.get_update_url }}">Update Location</a>
+      </li>
+     <li>
+          <a href = "{{ location.get_delete_url }}">Delete Location</a>
+      </li>
+    </ul>
 
     <section>
         <table>

@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
 
 from bookinginfo.forms import LocationForm, ServiceForm, BusForm, SemesterForm, EnrollmentForm, UserForm
@@ -44,6 +44,75 @@ class LocationCreate(ObjectCreateMixin, View):
     template_name = 'bookinginfo/location_form.html'
 
 
+class LocationUpdate(View):
+    form_class = LocationForm
+    model = LocationDetail
+    template_name = 'bookinginfo/location_form_update.html'
+
+    def get_object(self, pk):
+        return get_object_or_404(
+            self.model,
+            pk=pk)
+
+    def get(self, request, pk):
+        location = self.get_object(pk)
+        context = {
+            'form': self.form_class(
+                instance=location),
+            'location': location,
+        }
+        return render(
+            request, self.template_name, context)
+
+    def post(self, request, pk):
+        location = self.get_object(pk)
+        bound_form = self.form_class(
+            request.POST, instance=location)
+        if bound_form.is_valid():
+            new_instructor = bound_form.save()
+            return redirect(new_instructor)
+        else:
+            context = {
+                'form': bound_form,
+                'location': location,
+            }
+            return render(
+                request,
+                self.template_name,
+                context)
+
+
+# class InstructorDelete(View):
+#
+#     def get(self, request, pk):
+#         instructor = self.get_object(pk)
+#         sections = instructor.sections.all()
+#         if sections.count() > 0:
+#             return render(
+#                 request,
+#                 'courseinfo/instructor_refuse_delete.html',
+#                 {'instructor': instructor,
+#                  'sections': sections,
+#                  }
+#             )
+#         else:
+#             return render(
+#                 request,
+#                 'courseinfo/instructor_confirm_delete.html',
+#                 {'instructor': instructor}
+#             )
+#
+#     def get_object(self, pk):
+#         return get_object_or_404(
+#             Instructor,
+#             pk=pk)
+#
+#     def post(self, request, pk):
+#         instructor = self.get_object(pk)
+#         instructor.delete()
+#         return redirect('courseinfo_instructor_list_urlpattern')
+
+
 class ServiceList(View):
 
     def get(self, request):
@@ -78,6 +147,44 @@ class ServiceDetail(View):
              'semester': semester,
              'enrollment_list': enrollment_list}
         )
+
+
+class ServiceUpdate(View):
+    form_class = ServiceForm
+    model = Service
+    template_name = 'bookinginfo/service_form_update.html'
+
+    def get_object(self, pk):
+        return get_object_or_404(
+            self.model,
+            pk=pk)
+
+    def get(self, request, pk):
+        service = self.get_object(pk)
+        context = {
+            'form': self.form_class(
+                instance=service),
+            'service': service,
+        }
+        return render(
+            request, self.template_name, context)
+
+    def post(self, request, pk):
+        service = self.get_object(pk)
+        bound_form = self.form_class(
+            request.POST, instance=service)
+        if bound_form.is_valid():
+            new_section = bound_form.save()
+            return redirect(new_section)
+        else:
+            context = {
+                'form': bound_form,
+                'section': service,
+            }
+            return render(
+                request,
+                self.template_name,
+                context)
 
 
 class ServiceCreate(ObjectCreateMixin, View):
@@ -123,6 +230,44 @@ class BusCreate(ObjectCreateMixin, View):
     template_name = 'bookinginfo/bus_form.html'
 
 
+class BusUpdate(View):
+    form_class = BusForm
+    model = BusName
+    template_name = 'bookinginfo/bus_form_update.html'
+
+    def get_object(self, pk):
+        return get_object_or_404(
+            self.model,
+            pk=pk)
+
+    def get(self, request, pk):
+        bus = self.get_object(pk)
+        context = {
+            'form': self.form_class(
+                instance=bus),
+            'service': bus,
+        }
+        return render(
+            request, self.template_name, context)
+
+    def post(self, request, pk):
+        bus = self.get_object(pk)
+        bound_form = self.form_class(
+            request.POST, instance=bus)
+        if bound_form.is_valid():
+            new_section = bound_form.save()
+            return redirect(new_section)
+        else:
+            context = {
+                'form': bound_form,
+                'bus': bus,
+            }
+            return render(
+                request,
+                self.template_name,
+                context)
+
+
 class SemesterList(View):
 
     def get(self, request):
@@ -156,6 +301,43 @@ class SemesterCreate(ObjectCreateMixin, View):
     template_name = 'bookinginfo/semester_form.html'
 
 
+class SemesterUpdate(View):
+    form_class = SemesterForm
+    model = Semester
+    template_name = 'bookinginfo/semester_form_update.html'
+
+    def get_object(self, pk):
+        return get_object_or_404(
+            self.model,
+            pk=pk)
+
+    def get(self, request, pk):
+        semester = self.get_object(pk)
+        context = {
+            'form': self.form_class(
+                instance=semester),
+            'semester': semester,
+        }
+        return render(
+            request, self.template_name, context)
+
+    def post(self, request, pk):
+        semester = self.get_object(pk)
+        bound_form = self.form_class(
+            request.POST, instance=semester)
+        if bound_form.is_valid():
+            new_semester = bound_form.save()
+            return redirect(new_semester)
+        else:
+            context = {
+                'form': bound_form,
+                'semester': semester,
+            }
+            return render(
+                request,
+                self.template_name,
+                context)
+
 class UserList(View):
 
     def get(self, request):
@@ -187,6 +369,44 @@ class UserDetail(View):
 class UserCreate(ObjectCreateMixin, View):
     form_class = UserForm
     template_name = 'bookinginfo/user_form.html'
+
+
+class UserUpdate(View):
+    form_class = UserForm
+    model = User
+    template_name = 'bookinginfo/user_form_update.html'
+
+    def get_object(self, pk):
+        return get_object_or_404(
+            self.model,
+            pk=pk)
+
+    def get(self, request, pk):
+        user = self.get_object(pk)
+        context = {
+            'form': self.form_class(
+                instance=user),
+            'user': user,
+        }
+        return render(
+            request, self.template_name, context)
+
+    def post(self, request, pk):
+        user = self.get_object(pk)
+        bound_form = self.form_class(
+            request.POST, instance=user)
+        if bound_form.is_valid():
+            new_semester = bound_form.save()
+            return redirect(new_semester)
+        else:
+            context = {
+                'form': bound_form,
+                'user': user,
+            }
+            return render(
+                request,
+                self.template_name,
+                context)
 
 
 class EnrollmentList(View):
@@ -223,3 +443,42 @@ class EnrollmentDetail(View):
 class EnrollmentCreate(ObjectCreateMixin, View):
     form_class = EnrollmentForm
     template_name = 'bookinginfo/enrollment_form.html'
+
+
+class EnrollmentUpdate(View):
+    form_class = EnrollmentForm
+    model = Enrollment
+    template_name = 'bookinginfo/enrollment_form_update.html'
+
+    def get_object(self, pk):
+        return get_object_or_404(
+            self.model,
+            pk=pk)
+
+    def get(self, request, pk):
+        enrollment = self.get_object(pk)
+        context = {
+            'form': self.form_class(
+                instance=enrollment),
+            'enrollment': enrollment,
+        }
+        return render(
+            request, self.template_name, context)
+
+    def post(self, request, pk):
+        enrollment = self.get_object(pk)
+        bound_form = self.form_class(
+            request.POST, instance=enrollment)
+        if bound_form.is_valid():
+            new_semester = bound_form.save()
+            return redirect(new_semester)
+        else:
+            context = {
+                'form': bound_form,
+                'enrollment': enrollment,
+            }
+            return render(
+                request,
+                self.template_name,
+                context)
+

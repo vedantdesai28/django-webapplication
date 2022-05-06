@@ -6,6 +6,12 @@
 
 {% block content %}
     <h2>{{ enrollment.user }}</h2>
+    <li>
+          <a href = "{{ enrollment.get_update_url }}">Update Enrollment</a>
+      </li>
+     <li>
+          <a href = "{{ enrollment.get_delete_url }}">Delete Enrollment</a>
+      </li>
 
     <section>
         <table>
