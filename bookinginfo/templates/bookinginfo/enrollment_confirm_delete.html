@@ -1,0 +1,19 @@
+{% extends 'bookinginfo/base.html' %}
+
+{% block title %}
+    Delete Enrollment
+{% endblock %}
+
+{% block content %}
+    <form
+        action="{{ enrollment.get_delete_url }}"
+        method="post">
+        {% csrf_token %}
+        <p>
+            Are you sure that you want to delete
+            enrollment {{ enrollment }}?
+        </p>
+        <a href="{{ enrollment.get_absolute_url }}">Cancel</a>
+        <button type="submit">Delete enrollment</button>
+    </form>
+{% endblock %}

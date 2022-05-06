@@ -1,0 +1,26 @@
+{% extends 'bookinginfo/base.html' %}
+
+{% block title %}
+    Error Deleting Bus
+{% endblock %}
+
+{% block content %}
+    <div>
+        <h2>Error Deleting Bus</h2>
+        <p>
+            You may not delete bus {{ bus }}.  This
+            Course currently has the following
+            sections:
+        </p>
+
+        <ul>
+            {% for service in services %}
+            <li><a href="{{ service.get_absolute_url }}">{{ service }}</a></li>
+            {%  endfor %}
+        </ul>
+
+        <p>
+            Return to <a href="{% url 'bookinginfo_bus_list_urlpattern' %}">Bus List</a>.
+        </p>
+    </div>
+{% endblock %}

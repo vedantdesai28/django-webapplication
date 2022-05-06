@@ -21,7 +21,11 @@ from bookinginfo.views import (
     UserCreate,
     LocationUpdate,
     ServiceUpdate,
-    BusUpdate, SemesterUpdate, UserUpdate, EnrollmentUpdate
+    BusUpdate,
+    SemesterUpdate,
+    UserUpdate,
+    EnrollmentUpdate,
+    EnrollmentDelete, LocationDelete, ServiceDelete, BusDelete, SemesterDelete, UserDelete
 )
 
 urlpatterns = [
@@ -41,6 +45,10 @@ urlpatterns = [
          LocationUpdate.as_view(),
          name='bookinginfo_location_update_urlpattern'),
 
+    path('location/<int:pk>/delete/',
+         LocationDelete.as_view(),
+         name='bookinginfo_location_delete_urlpattern'),
+
     path('service/',
          ServiceList.as_view(),
          name='bookinginfo_service_list_urlpattern'),
@@ -56,6 +64,10 @@ urlpatterns = [
     path('service/<int:pk>/update/',
          ServiceUpdate.as_view(),
          name='bookinginfo_service_update_urlpattern'),
+
+    path('service/<int:pk>/delete/',
+         ServiceDelete.as_view(),
+         name='bookinginfo_service_delete_urlpattern'),
 
     path('bus/',
          BusList.as_view(),
@@ -73,6 +85,10 @@ urlpatterns = [
          BusUpdate.as_view(),
          name='bookinginfo_bus_update_urlpattern'),
 
+    path('bus/<int:pk>/delete/',
+         BusDelete.as_view(),
+         name='bookinginfo_bus_delete_urlpattern'),
+
     path('semester/',
          SemesterList.as_view(),
          name='bookinginfo_semester_list_urlpattern'),
@@ -88,6 +104,10 @@ urlpatterns = [
     path('semester/<int:pk>/update/',
          SemesterUpdate.as_view(),
          name='bookinginfo_semester_update_urlpattern'),
+
+    path('semester/<int:pk>/delete/',
+         SemesterDelete.as_view(),
+         name='bookinginfo_semester_delete_urlpattern'),
 
     path('user/',
          UserList.as_view(),
@@ -105,6 +125,10 @@ urlpatterns = [
          UserUpdate.as_view(),
          name='bookinginfo_user_update_urlpattern'),
 
+    path('user/<int:pk>/delete/',
+         UserDelete.as_view(),
+         name='bookinginfo_user_delete_urlpattern'),
+
     path('enrollment/',
          EnrollmentList.as_view(),
          name='bookinginfo_enrollment_list_urlpattern'),
@@ -117,8 +141,12 @@ urlpatterns = [
          EnrollmentCreate.as_view(),
          name='bookinginfo_enrollment_create_urlpattern'),
 
-    path('enrollment/<int:pk>/enrollment/',
+    path('enrollment/<int:pk>/update/',
          EnrollmentUpdate.as_view(),
          name='bookinginfo_enrollment_update_urlpattern'),
+
+    path('enrollment/<int:pk>/delete/',
+         EnrollmentDelete.as_view(),
+         name='bookinginfo_enrollment_delete_urlpattern'),
 
 ]

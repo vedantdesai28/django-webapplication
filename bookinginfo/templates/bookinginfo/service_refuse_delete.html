@@ -1,0 +1,26 @@
+{% extends 'bookinginfo/base.html' %}
+
+{% block title %}
+    Error Deleting Service
+{% endblock %}
+
+{% block content %}
+    <div>
+        <h2>Error Deleting Service</h2>
+        <p>
+            You may not delete service {{ sections }}.  This
+            service  currently has the following
+            enrollment:
+        </p>
+
+        <ul>
+            {% for enroll in enrollment %}
+            <li><a href="{{ enroll.get_absolute_url }}">{{ enroll }}</a></li>
+            {%  endfor %}
+        </ul>
+
+        <p>
+            Return to <a href="{% url 'bookinginfo_service_list_urlpattern' %}">Service List</a>.
+        </p>
+    </div>
+{% endblock %}

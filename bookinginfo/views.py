@@ -82,35 +82,37 @@ class LocationUpdate(View):
                 context)
 
 
-# class InstructorDelete(View):
-#
-#     def get(self, request, pk):
-#         instructor = self.get_object(pk)
-#         sections = instructor.sections.all()
-#         if sections.count() > 0:
-#             return render(
-#                 request,
-#                 'courseinfo/instructor_refuse_delete.html',
-#                 {'instructor': instructor,
-#                  'sections': sections,
-#                  }
-#             )
-#         else:
-#             return render(
-#                 request,
-#                 'courseinfo/instructor_confirm_delete.html',
-#                 {'instructor': instructor}
-#             )
-#
-#     def get_object(self, pk):
-#         return get_object_or_404(
-#             Instructor,
-#             pk=pk)
-#
-#     def post(self, request, pk):
-#         instructor = self.get_object(pk)
-#         instructor.delete()
-#         return redirect('courseinfo_instructor_list_urlpattern')
+class LocationDelete(View):
+
+    def get(self, request, pk):
+        location = self.get_object(pk)
+        services1 = location.startlocation.all()
+        services2 = location.endlocation.all()
+        if services1.count() > 0 or services2.count() > 0:
+            return render(
+                request,
+                'bookinginfo/location_refuse_delete.html',
+                {'location': location,
+                 'services_start': services1,
+                 'services_end': services2,
+                 }
+            )
+        else:
+            return render(
+                request,
+                'bookinginfo/location_confirm_delete.html',
+                {'location': location}
+            )
+
+    def get_object(self, pk):
+        return get_object_or_404(
+            LocationDetail,
+            pk=pk)
+
+    def post(self, request, pk):
+        location = self.get_object(pk)
+        location.delete()
+        return redirect('bookinginfo_location_list_urlpattern')
 
 
 class ServiceList(View):
@@ -185,6 +187,37 @@ class ServiceUpdate(View):
                 request,
                 self.template_name,
                 context)
+
+
+class ServiceDelete(View):
+
+    def get(self, request, pk):
+        service = self.get_object(pk)
+        enrollment_list = service.enrollments.all()
+        if enrollment_list.count() > 0:
+            return render(
+                request,
+                'bookinginfo/service_refuse_delete.html',
+                {'service': service,
+                 'enrollment': enrollment_list,
+                 }
+            )
+        else:
+            return render(
+                request,
+                'bookinginfo/service_confirm_delete.html',
+                {'service': service}
+            )
+
+    def get_object(self, pk):
+        return get_object_or_404(
+            Service,
+            pk=pk)
+
+    def post(self, request, pk):
+        service = self.get_object(pk)
+        service.delete()
+        return redirect('bookinginfo_service_list_urlpattern')
 
 
 class ServiceCreate(ObjectCreateMixin, View):
@@ -268,6 +301,37 @@ class BusUpdate(View):
                 context)
 
 
+class BusDelete(View):
+
+    def get(self, request, pk):
+        bus = self.get_object(pk)
+        service_list = bus.schedules.all()
+        if service_list.count() > 0:
+            return render(
+                request,
+                'bookinginfo/bus_refuse_delete.html',
+                {'bus': bus,
+                 'services': service_list,
+                 }
+            )
+        else:
+            return render(
+                request,
+                'bookinginfo/bus_confirm_delete.html',
+                {'bus': bus}
+            )
+
+    def get_object(self, pk):
+        return get_object_or_404(
+            BusName,
+            pk=pk)
+
+    def post(self, request, pk):
+        service = self.get_object(pk)
+        service.delete()
+        return redirect('bookinginfo_bus_list_urlpattern')
+
+
 class SemesterList(View):
 
     def get(self, request):
@@ -338,6 +402,38 @@ class SemesterUpdate(View):
                 self.template_name,
                 context)
 
+
+class SemesterDelete(View):
+
+    def get(self, request, pk):
+        semester = self.get_object(pk)
+        service_list = semester.schedules.all()
+        if service_list.count() > 0:
+            return render(
+                request,
+                'bookinginfo/semester_refuse_delete.html',
+                {'semester': semester,
+                 'services': service_list,
+                 }
+            )
+        else:
+            return render(
+                request,
+                'bookinginfo/semester_confirm_delete.html',
+                {'semester': semester}
+            )
+
+    def get_object(self, pk):
+        return get_object_or_404(
+            Semester,
+            pk=pk)
+
+    def post(self, request, pk):
+        semester = self.get_object(pk)
+        semester.delete()
+        return redirect('bookinginfo_semester_list_urlpattern')
+
+
 class UserList(View):
 
     def get(self, request):
@@ -407,6 +503,37 @@ class UserUpdate(View):
                 request,
                 self.template_name,
                 context)
+
+
+class UserDelete(View):
+
+    def get(self, request, pk):
+        user = self.get_object(pk)
+        service_list = user.enrollments.all()
+        if service_list.count() > 0:
+            return render(
+                request,
+                'bookinginfo/user_refuse_delete.html',
+                {'user': user,
+                 'services': service_list,
+                 }
+            )
+        else:
+            return render(
+                request,
+                'bookinginfo/semester_confirm_delete.html',
+                {'semester': user}
+            )
+
+    def get_object(self, pk):
+        return get_object_or_404(
+            User,
+            pk=pk)
+
+    def post(self, request, pk):
+        user = self.get_object(pk)
+        user.delete()
+        return redirect('bookinginfo_user_list_urlpattern')
 
 
 class EnrollmentList(View):
@@ -482,3 +609,25 @@ class EnrollmentUpdate(View):
                 self.template_name,
                 context)
 
+
+class EnrollmentDelete(View):
+
+    def get(self, request, pk):
+        enrollment = self.get_object(pk)
+        return render(
+            request,
+            'bookinginfo/enrollment_confirm_delete.html',
+            {'enrollment': enrollment}
+        )
+
+    def get_object(self, pk):
+        enrollment = get_object_or_404(
+            Enrollment,
+            pk=pk
+        )
+        return enrollment
+
+    def post(self, request, pk):
+        enrollment = self.get_object(pk)
+        enrollment.delete()
+        return redirect('bookinginfo_enrollment_delete_urlpattern')

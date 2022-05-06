@@ -1,0 +1,21 @@
+{% extends 'bookinginfo/base.html' %}
+
+{% block title %}
+    Delete Location
+{% endblock %}
+
+{% block content %}
+    <form
+        action="{{ location.get_delete_url }}"
+        method="post">
+        {% csrf_token %}
+        <p>
+            Are you sure that you want to delete
+            location {{ location }}?
+        </p>
+        <a href="{{ location.get_absolute_url }}"
+           class="button button-primary">
+        Cancel</a>
+        <button type="submit" class="button button-primary">Delete Location</button>
+    </form>
+{% endblock %}

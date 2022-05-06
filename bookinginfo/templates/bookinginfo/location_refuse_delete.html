@@ -1,0 +1,31 @@
+{% extends 'bookinginfo/base.html' %}
+
+{% block title %}
+    Error Deleting Instructor
+{% endblock %}
+
+{% block content %}
+    <div>
+        <h2>Error Deleting Instructor</h2>
+        <p>
+            You cannot delete {{ location }}.  This
+            location is currently assigned to the following
+            services:
+        </p>
+        <h5>Services having {{ location }} as starting point </h5>
+        <ul>
+            {% for service in services_end %}
+            <li><a href="{{ service.get_absolute_url }}">{{ service }}</a></li>
+            {%  endfor %}
+        </ul>
+        <h5>Services having {{ location }} as ending point.</h5>
+         <ul>
+            {% for service in services_start %}
+            <li><a href="{{ service.get_absolute_url }}">{{ service }}</a></li>
+            {%  endfor %}
+        </ul>
+        <p>
+            Return to <a href="{% url 'bookinginfo_location_list_urlpattern' %}">Instructor List</a>.
+        </p>
+    </div>
+{% endblock %}
