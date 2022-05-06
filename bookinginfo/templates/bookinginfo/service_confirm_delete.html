@@ -13,7 +13,7 @@
             Are you sure that you want to delete
             service {{ service }}?
         </p>
-        <a href="{{ service.get_absolute_url }}">Cancel</a>
-        <button type="submit">Delete service</button>
+        <a href="{{ service.get_absolute_url }}" class="button button-primary">Cancel</a>
+        <button type="submit" class="button button-primary">Delete service</button>
     </form>
 {% endblock %}

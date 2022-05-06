@@ -13,7 +13,9 @@
             Are you sure that you want to delete
             Bus {{ bus }}?
         </p>
-        <a href="{{ bus.get_absolute_url }}">Cancel</a>
-        <button type="submit">Delete Bus</button>
+        <a href="{{ bus.get_absolute_url }}"
+            class="button button-primary">
+            Cancel</a>
+        <button type="submit" class="button button-primary">Delete Bus</button>
     </form>
 {% endblock %}

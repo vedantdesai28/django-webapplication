@@ -13,7 +13,8 @@
             Are you sure that you want to delete
             enrollment {{ enrollment }}?
         </p>
-        <a href="{{ enrollment.get_absolute_url }}">Cancel</a>
-        <button type="submit">Delete enrollment</button>
+        <a href="{{ enrollment.get_absolute_url }}"
+        class="button button-primary">Cancel</a>
+        <button type="submit" class="button button-primary">Delete enrollment</button>
     </form>
 {% endblock %}

@@ -27,9 +27,8 @@
 
 {% block content %}
 <h2>Service List</h2>
-    <div>
-    <a href="{% url 'bookinginfo_service_create_urlpattern' %}">Add a new Service</a>
-    </div>
+    <a href="{% url 'bookinginfo_service_create_urlpattern' %}" class="button button-primary">Add a new Service</a>
+
 <ul>
     {% for service in service_list %}
     <li>

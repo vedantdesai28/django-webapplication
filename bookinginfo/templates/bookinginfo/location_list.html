@@ -6,9 +6,8 @@
 
 {% block content %}
 <h2>Location List</h2>
-    <div>
-    <a href="{% url 'bookinginfo_location_create_urlpattern' %}">Add new Location</a>
-    </div>
+    <a href="{% url 'bookinginfo_location_create_urlpattern' %}" class="button button-primary">Add new Location</a>
+
 <ul>
     {% for location in location_list %}
     <li>

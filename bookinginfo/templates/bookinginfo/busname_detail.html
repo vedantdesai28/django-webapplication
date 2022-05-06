@@ -6,12 +6,16 @@
 
 {% block content %}
     <h2>{{ bus }}</h2>
+
+
+    <ul class="ezu-button-list">
      <li>
-          <a href = "{{ bus.get_update_url }}">Update Bus Detail</a>
+          <a href = "{{ bus.get_update_url }}" class="button button-primary">Update Bus Detail</a>
       </li>
      <li>
-          <a href = "{{ bus.get_delete_url }}">Delete Bus</a>
+          <a href = "{{ bus.get_delete_url }}" class="button button-primary">Delete Bus</a>
       </li>
+      </ul>
      <section>
      <table>
             <tr>

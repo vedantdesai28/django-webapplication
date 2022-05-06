@@ -6,9 +6,8 @@
 
 {% block content %}
 <h2>Bus List</h2>
-    <div>
-    <a href="{% url 'bookinginfo_bus_create_urlpattern' %}">Add Bus</a>
-    </div>
+
+    <a href="{% url 'bookinginfo_bus_create_urlpattern' %}" class="button button-primary">Add Bus</a>
 <ul>
     {% for bus in bus_list %}
     <li>

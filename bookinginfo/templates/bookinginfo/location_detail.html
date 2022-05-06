@@ -6,12 +6,12 @@
 
 {% block content %}
     <h2>{{ location }}</h2>
-    <ul>
+    <ul class="ezu-button-list">
     <li>
-          <a href = "{{ location.get_update_url }}">Update Location</a>
+          <a href = "{{ location.get_update_url }}"  class="button button-primary">Update Location</a>
       </li>
      <li>
-          <a href = "{{ location.get_delete_url }}">Delete Location</a>
+          <a href = "{{ location.get_delete_url }}" class="button button-primary">Delete Location</a>
       </li>
     </ul>
 
@@ -36,7 +36,7 @@
         <ul>
             {% for service in service_list_2 %}
                 <li>
-                    <a href="{{ service.get_absolute_url }}">{{ service }}</a>
+                    <a href="{{ service.get_absolute_url }}" >{{ service }}</a>
                 </li>
             {% empty %}
                 <li><em>This location does not have any originating/starting bus.</em></li>

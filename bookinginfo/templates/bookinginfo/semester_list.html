@@ -7,7 +7,7 @@
 {% block content %}
 <h2>Semester List</h2>
     <div>
-    <a href="{% url 'bookinginfo_semester_create_urlpattern' %}">Add Semester</a>
+    <a href="{% url 'bookinginfo_semester_create_urlpattern' %}" class="button button-primary">Add Semester</a>
     </div>
 <ul>
     {% for semester in semester_list %}

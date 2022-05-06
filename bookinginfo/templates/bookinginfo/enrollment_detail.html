@@ -6,13 +6,16 @@
 
 {% block content %}
     <h2>{{ enrollment.user }}</h2>
+    <ul class="ezu-button-list">
     <li>
-          <a href = "{{ enrollment.get_update_url }}">Update Enrollment</a>
+          <a href = "{{ enrollment.get_update_url }}"
+	   class="button button-primary">
+	   Update Enrollment</a>
       </li>
      <li>
-          <a href = "{{ enrollment.get_delete_url }}">Delete Enrollment</a>
+          <a href = "{{ enrollment.get_delete_url }}" class="button button-primary" >Delete Enrollment</a>
       </li>
-
+     </ul>
     <section>
         <table>
             <tr>

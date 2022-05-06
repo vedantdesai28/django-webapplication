@@ -6,12 +6,14 @@
 
 {% block content %}
     <h2>{{ user }}</h2>
+    <ul class="ezu-button-list">
     <li>
-          <a href = "{{ user.get_update_url }}">Update User</a>
+          <a href = "{{ user.get_update_url }}" class="button button-primary">Update User</a>
       </li>
      <li>
-          <a href = "{{ user.get_delete_url }}">Delete User</a>
+          <a href = "{{ user.get_delete_url }}" class="button button-primary">Delete User</a>
       </li>
+    <ul>
     <section>
         <table>
             <tr>
