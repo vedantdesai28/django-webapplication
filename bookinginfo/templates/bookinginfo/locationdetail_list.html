@@ -1,0 +1,21 @@
+{% extends 'bookinginfo/base.html' %}
+
+{% block title %}
+    Location List
+{%  endblock %}
+
+{% block content %}
+<h2>Location List</h2>
+    <a href="{% url 'bookinginfo_location_create_urlpattern' %}" class="button button-primary">Add new Location</a>
+
+<ul>
+    {% for location in locationdetail_list %}
+    <li>
+      <a href="{{ location.get_absolute_url }}">{{ location }}</a>
+    </li>
+    {% empty %}
+      <li><em> There are currently no location available.</em></li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

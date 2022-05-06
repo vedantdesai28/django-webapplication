@@ -9,7 +9,7 @@
 
     <a href="{% url 'bookinginfo_bus_create_urlpattern' %}" class="button button-primary">Add Bus</a>
 <ul>
-    {% for bus in bus_list %}
+    {% for bus in busname_list %}
     <li>
       <a href="{{ bus.get_absolute_url }}">{{ bus }}</a>
     </li>

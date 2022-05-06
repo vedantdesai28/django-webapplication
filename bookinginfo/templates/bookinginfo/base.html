@@ -28,7 +28,7 @@
 <div class="container">
     <header class="row">
         <div class="offset-by-one ten columns">
-            <h1 class="logo"><b>Champaign-Urbana Bus Service</b></h1>
+            <h1><b>Champaign-Urbana Bus Service</b></h1>
             <h2><u>Bus Service Enrollment And Management System</u></h2>
         </div>
     </header>
@@ -52,6 +52,10 @@
             <li>
                 <a href="{% url 'bookinginfo_enrollment_list_urlpattern' %}">
                     Enrollment to Bus Service</a></li>
+            </li>
+            <li>
+                <a href="{% url 'about_urlpattern' %}">About</a>
+            </li>
         </ul>
     </nav>
     <main>
@@ -59,6 +63,42 @@
             This is default content!
         {% endblock %}
     </main>
+    {% if is_paginated %}
+        <div class="row">
+            <div class="twelve columns">
+                <ul class="pagination">
+                    {% if first_page_url %}
+                        <li>
+                            <a href="{{ first_page_url }}">
+                                First</a>
+                        </li>
+                    {% endif %}
+                    {% if previous_page_url %}
+                        <li>
+                            <a href="{{ previous_page_url }}">
+                                Previous</a>
+                        </li>
+                    {% endif %}
+                    <li>
+                        Page {{ page_obj.number }}
+                        of {{ paginator.num_pages }}
+                    </li>
+                    {% if next_page_url %}
+                        <li>
+                            <a href="{{ next_page_url }}">
+                                Next</a>
+                        </li>
+                    {% endif %}
+                    {% if last_page_url %}
+                        <li>
+                            <a href="{{ last_page_url }}">
+                                Last</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    {% endif %}
 </div><!-- end of container -->
 
 <footer>
@@ -75,4 +115,5 @@
 
 </body>
 </html>
+
 
