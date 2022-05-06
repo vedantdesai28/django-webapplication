@@ -47,7 +47,7 @@
 <ul>
     {% for location in location_list %}
     <li>
-      <a href="">{{ location }}</a>
+      <a href="{{ location.get_absolute_url }}">{{ location }}</a>
     </li>
     {% empty %}
       <li><em> There are currently no location available.</em></li>

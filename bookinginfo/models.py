@@ -3,6 +3,7 @@ from django.db import models
 
 # Create your models here.
 from django.db.models import UniqueConstraint
+from django.urls import reverse
 
 
 class Period(models.Model):
@@ -36,6 +37,21 @@ class Semester(models.Model):
     def __str__(self):
         return '%s - %s' % (self.year.year, self.period.period_name)
 
+    def get_absolute_url(self):
+        return reverse('bookinginfo_semester_detail_urlpattern',
+                       kwargs={'pk': self.pk}
+                       )
+
+    def get_update_url(self):
+        return reverse('bookinginfo_semester_update_urlpattern',
+                       kwargs={'pk': self.pk}
+                       )
+
+    def get_delete_url(self):
+        return reverse('bookinginfo_semester_delete_urlpattern',
+                       kwargs={'pk': self.pk}
+                       )
+
     class Meta:
         ordering = ['year__year', 'period__period_sequence']
         constraints = [
@@ -50,6 +66,21 @@ class BusName(models.Model):
 
     def __str__(self):
         return '%s - %s' % ( self.bus_number, self.bus_name)
+
+    def get_absolute_url(self):
+        return reverse('bookinginfo_bus_detail_urlpattern',
+                       kwargs={'pk': self.pk}
+                       )
+
+    def get_update_url(self):
+        return reverse('bookinginfo_bus_update_urlpattern',
+                       kwargs={'pk': self.pk}
+                       )
+
+    def get_delete_url(self):
+        return reverse('bookinginfo_bus_delete_urlpattern',
+                       kwargs={'pk': self.pk}
+                       )
 
     class Meta:
         ordering = ['bus_number', 'bus_name']
@@ -70,6 +101,21 @@ class LocationDetail(models.Model):
         else:
             result = '%s (%s)' % (self.location_name, self.disambiguator)
         return result
+
+    def get_absolute_url(self):
+        return reverse('bookinginfo_location_detail_urlpattern',
+                       kwargs={'pk': self.pk}
+                       )
+
+    def get_update_url(self):
+        return reverse('bookinginfo_location_update_urlpattern',
+                       kwargs={'pk': self.pk}
+                       )
+
+    def get_delete_url(self):
+        return reverse('bookinginfo_location_delete_urlpattern',
+                       kwargs={'pk': self.pk}
+                       )
 
     class Meta:
         ordering = ['location_name', 'disambiguator']
@@ -92,6 +138,21 @@ class User(models.Model):
             result = '%s, %s (%s)' % (self.last_name, self.first_name, self.disambiguator)
         return result
 
+    def get_absolute_url(self):
+        return reverse('bookinginfo_user_detail_urlpattern',
+                       kwargs={'pk': self.pk}
+                       )
+
+    def get_update_url(self):
+        return reverse('bookinginfo_user_update_urlpattern',
+                       kwargs={'pk': self.pk}
+                       )
+
+    def get_delete_url(self):
+        return reverse('bookinginfo_user_delete_urlpattern',
+                       kwargs={'pk': self.pk}
+                       )
+
     class Meta:
         ordering = ['last_name', 'first_name', 'disambiguator']
         constraints = [
@@ -110,6 +171,21 @@ class Service(models.Model):
     def __str__(self):
         return '%s %s- %s (%s)' % (self.bus.bus_number, self.bus.bus_name, self.trip_direction, self.semester.__str__())
 
+    def get_absolute_url(self):
+        return reverse('bookinginfo_service_detail_urlpattern',
+                       kwargs={'pk': self.pk}
+                       )
+
+    def get_update_url(self):
+        return reverse('bookinginfo_service_update_urlpattern',
+                       kwargs={'pk': self.pk}
+                       )
+
+    def get_delete_url(self):
+        return reverse('bookinginfo_service_delete_urlpattern',
+                       kwargs={'pk': self.pk}
+                       )
+
     class Meta:
         ordering = ['bus', 'trip_direction', 'semester']
         constraints = [
@@ -124,6 +200,21 @@ class Enrollment(models.Model):
 
     def __str__(self):
         return '%s / %s' % (self.service, self.user)
+
+    def get_absolute_url(self):
+        return reverse('bookinginfo_enrollment_detail_urlpattern',
+                       kwargs={'pk': self.pk}
+                       )
+
+    def get_update_url(self):
+        return reverse('bookinginfo_enrollment_update_urlpattern',
+                       kwargs={'pk': self.pk}
+                       )
+
+    def get_delete_url(self):
+        return reverse('bookinginfo_enrollment_delete_urlpattern',
+                       kwargs={'pk': self.pk}
+                       )
 
     class Meta:
         ordering = ['service', 'user']

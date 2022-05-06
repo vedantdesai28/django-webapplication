@@ -24,7 +24,7 @@
         <ul>
             {% for service in service_list %}
                 <li>
-                    <a href="">{{ service }}</a>
+                    <a href="{{ service.get_absolute_url }}">{{ service }}</a>
                 </li>
             {% empty %}
                 <li><em>There are currently no services scheduled for this bus.</em></li>
