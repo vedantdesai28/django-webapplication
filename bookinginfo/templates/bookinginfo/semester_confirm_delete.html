@@ -11,7 +11,7 @@
         {% csrf_token %}
         <p>
             Are you sure that you want to delete
-            semester {{ semester }}?
+            {{ semester }}?
         </p>
         <a href="{{ semester.get_absolute_url }}" class="button button-primary">Cancel</a>
         <button type="submit" class="button button-primary">Delete Semester</button>

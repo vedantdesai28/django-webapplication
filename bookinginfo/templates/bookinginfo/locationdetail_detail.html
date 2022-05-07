@@ -1,17 +1,17 @@
 {% extends 'bookinginfo/base.html' %}
 
 {% block title %}
-    Location - {{ location }}
+    Location - {{ locationdetail }}
 {% endblock %}
 
 {% block content %}
-    <h2>{{ location }}</h2>
+    <h2>{{ locationdetail }}</h2>
     <ul class="ezu-button-list">
     <li>
-          <a href = "{{ location.get_update_url }}"  class="button button-primary">Update Location</a>
+          <a href = "{{ locationdetail.get_update_url }}"  class="button button-primary">Update Location</a>
       </li>
      <li>
-          <a href = "{{ location.get_delete_url }}" class="button button-primary">Delete Location</a>
+          <a href = "{{ locationdetail.get_delete_url }}" class="button button-primary">Delete Location</a>
       </li>
     </ul>
 
@@ -19,12 +19,12 @@
         <table>
             <tr>
                 <th>Location Name:</th>
-                <td>{{ location.location_name }}</td>
+                <td>{{ locationdetail.location_name }}</td>
             </tr>
-            {% if location.disambiguator %}
+            {% if locationdetail.disambiguator %}
                 <tr>
                     <th>Disambiguator:</th>
-                    <td>{{ location.disambiguator }}</td>
+                    <td>{{ locationdetail.disambiguator }}</td>
                 </tr>
             {% endif %}
         </table>
@@ -32,7 +32,7 @@
 
     <section>
         <h3>Services</h3>
-        <h5>Buses Starting at {{ location }}</h5>
+        <h5>Buses Starting at {{ locationdetail }}</h5>
         <ul>
             {% for service in service_list_2 %}
                 <li>
